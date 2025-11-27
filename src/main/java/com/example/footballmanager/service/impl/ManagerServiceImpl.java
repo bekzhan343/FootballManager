@@ -4,11 +4,11 @@ import com.example.footballmanager.constants.ApiErrorMessage;
 import com.example.footballmanager.dto.ManagerDTO;
 import com.example.footballmanager.entity.Manager;
 import com.example.footballmanager.exceptions.NotFoundException;
+import com.example.footballmanager.mapping.ManagerDTOMapping;
 import com.example.footballmanager.mapping.ManagerMapping;
 import com.example.footballmanager.repository.ManagerRepository;
 import com.example.footballmanager.response.IamResponse;
 import com.example.footballmanager.service.ManagerService;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.jetbrains.annotations.NotNull;
@@ -18,17 +18,12 @@ import org.jetbrains.annotations.NotNull;
 public class ManagerServiceImpl implements ManagerService {
 
     private final ManagerRepository repository;
-    private final ManagerMapping mapper;
-
+    private final ManagerDTOMapping mapper;
+    private final ManagerMapping managerMapping;
 
     @Override
     public IamResponse<ManagerDTO> createManagerObj(@NotNull ManagerDTO dto) {
-        Manager manager = new Manager();
-        manager.setId(dto.getId());
-        manager.setFullName(dto.getFullName());
-        manager.setLeague(dto.getLeague());
-        manager.setClub(dto.getClub());
-
+        Manager manager = managerMapping.toManager(dto);
         repository.save(manager);
 
         return IamResponse.createdSuccessfully(dto);

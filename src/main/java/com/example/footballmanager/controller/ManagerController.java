@@ -3,9 +3,6 @@ package com.example.footballmanager.controller;
 
 import com.example.footballmanager.constants.ApiLogMessage;
 import com.example.footballmanager.dto.ManagerDTO;
-import com.example.footballmanager.entity.Manager;
-import com.example.footballmanager.mapping.ManagerMapping;
-import com.example.footballmanager.repository.ManagerRepository;
 import com.example.footballmanager.response.IamResponse;
 import com.example.footballmanager.service.ManagerService;
 import com.example.footballmanager.utils.ApiUtils;
