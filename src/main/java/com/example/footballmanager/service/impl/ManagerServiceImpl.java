@@ -3,6 +3,7 @@ package com.example.footballmanager.service.impl;
 import com.example.footballmanager.constants.ApiErrorMessage;
 import com.example.footballmanager.dto.ManagerDTO;
 import com.example.footballmanager.entity.Manager;
+import com.example.footballmanager.exceptions.DataAlreadyExistException;
 import com.example.footballmanager.exceptions.NotFoundException;
 import com.example.footballmanager.mapping.ManagerDTOMapping;
 import com.example.footballmanager.mapping.ManagerMapping;
@@ -23,6 +24,10 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     public IamResponse<ManagerDTO> createManagerObj(@NotNull ManagerDTO dto) {
+        if (repository.existsManagerByFullName(dto.getFullName())){
+            throw new DataAlreadyExistException(ApiErrorMessage.DATA_ALREADY_EXIST_INFO.getMessage(dto.getFullName()));
+        }
+
         Manager manager = managerMapping.toManager(dto);
         repository.save(manager);
 

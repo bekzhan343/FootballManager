@@ -8,7 +8,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
 public enum ApiErrorMessage {
 
-    API_NOT_FOUND_INFO("log{INFO NOT FOUND ID->%s}");
+    API_NOT_FOUND_INFO("log{INFO NOT FOUND ID->%s}"),
+    DATA_ALREADY_EXIST_INFO("log{DATA BY TITLE ALREADY EXISTS -> %s}");
     public final String message;
 
     public String getMessage(Object... args) {
