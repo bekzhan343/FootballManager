@@ -10,6 +10,7 @@ import com.example.footballmanager.mapping.ManagerMapping;
 import com.example.footballmanager.repository.ManagerRepository;
 import com.example.footballmanager.response.IamResponse;
 import com.example.footballmanager.service.ManagerService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.jetbrains.annotations.NotNull;

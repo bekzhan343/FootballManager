@@ -6,6 +6,7 @@ import com.example.footballmanager.dto.ManagerDTO;
 import com.example.footballmanager.response.IamResponse;
 import com.example.footballmanager.service.ManagerService;
 import com.example.footballmanager.utils.ApiUtils;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ public class ManagerController {
 
 
     @PostMapping("${end.point.create}")
-    public ResponseEntity<IamResponse<ManagerDTO>> createManager(@RequestBody ManagerDTO dto){
+    public ResponseEntity<IamResponse<ManagerDTO>> createManager(@RequestBody @Valid ManagerDTO dto){
         IamResponse<ManagerDTO> response = service.createManagerObj(dto);
 
         log.trace(ApiLogMessage.METHOD_NAME_INFO.getValue(), ApiUtils.getMethodName());

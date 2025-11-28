@@ -16,12 +16,12 @@ public class Manager {
     private Integer id;
 
 
-    @Column(name = "fullName",nullable = false)
+    @Column(name = "fullName")
     private String fullName;
 
-    @Column(name = "league", nullable = false)
+    @Column(name = "league")
     private String league;
 
-    @Column(name = "club", nullable = false)
+    @Column(name = "club")
     private String club;
 }
